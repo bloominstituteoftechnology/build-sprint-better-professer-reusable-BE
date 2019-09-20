@@ -8,7 +8,11 @@ exports.up = function(knex) {
       tbl.string('first_name', 128).notNullable()
       tbl.string('last_name', 128).notNullable()
   })
-  
+  .createTable('students', tbl => {
+      tbl.increments()
+       
+      
+  })
 };
 
 exports.down = function(knex) {
