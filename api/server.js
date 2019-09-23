@@ -1,11 +1,19 @@
-const express = require('express')
-const server = express()
-const UserRouter = require('../users/user-router')
+const express = require("express");
+const server = express();
+const UserRouter = require("../users/user-router");
+const StudentsRouter = require("../students/students-router");
+const MessagesRouter = require("../messages/messages-router");
+const ProjectsRouter = require("../projects/projects-router");
 
-server.use('/users', UserRouter)
+server.use(express.json());
 
-server.get('/', (req, res) => {
-    res.send('Is this thing on?')
-})
+server.use("/users", UserRouter);
+server.use("/students", StudentsRouter); // get, add, delete, put
+server.use("/messages", MessagesRouter); // get, add
+server.use("/projects", ProjectsRouter); // get, add, delete, put
 
-module.exports = server
+server.get("/", (req, res) => {
+  res.send("Is this thing on?");
+});
+
+module.exports = server;
