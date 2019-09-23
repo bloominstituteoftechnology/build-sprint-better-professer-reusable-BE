@@ -8,8 +8,11 @@ module.exports = {
     remove
 }
 
-function find() {
-    return db('students')
+function find(id) {
+    return db('students as s')
+        .join('users as u', 's.user_id', '=', 'u.id')
+        .where({ user_id: id})
+
 }
 
 function findById(id) {
@@ -17,7 +20,7 @@ function findById(id) {
 }
 
 function add() {
-    returremove
+    return null
 }
 
 function update() {
