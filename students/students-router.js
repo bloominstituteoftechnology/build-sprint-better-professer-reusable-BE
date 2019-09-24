@@ -44,4 +44,17 @@ router.put('/:id', (req, res) => {
         })
 })
 
+router.delete('/:id', (req, res) => {
+    const id = req.params.id
+
+    Students.remove(id)
+        .then(student => {
+            res.status(200).json(student)
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).json({ error: 'Could not delete student'})
+        })
+})
+
 module.exports = router

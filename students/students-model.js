@@ -12,9 +12,6 @@ function find(id) {
         .join('students as s', 'u.id', '=', 's.user_id')
         .where({ user_id: id})
         .select('s.id', 's.student_name as student', 's.major')
-        .then(([ stud ]) => {
-            return stud
-        })
 
 }
 
@@ -30,6 +27,6 @@ function change(id, info) {
 }
 
 function remove(id) {
-    return db('students').where(id).del()
+    return db('students').where('id', id).del()
 }
 
