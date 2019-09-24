@@ -24,6 +24,7 @@ function add(body) {
 
 function change(id, info) {
     return db('students').where('id', id).update(info)
+    .then(count => (count > 0 ? this.get(id) : null))
 }
 
 function remove(id) {
