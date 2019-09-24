@@ -2,7 +2,7 @@ const router = require('express').Router()
 
 const Students = require('./students-model')
 
-router.get('/:id', (req, res) => {
+router.get('/user/:id', (req, res) => {
     const { id } = req.params 
     Students.find(id)
         .then(students => {
@@ -11,6 +11,36 @@ router.get('/:id', (req, res) => {
         .catch(error => {
             console.log(error)
             res.status(500).json({ error: 'Could not load students'})
+        })
+})
+
+router.post('/', (req, res) => {
+    const body = req.body
+    if(body.student_name && body.user_id){
+        Students.add(body)
+        .then(students => {
+            res.status(201).json(students)
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).json({ error: 'Could not add student'})
+        })
+    } else {
+        res.status(401).json({ message: 'Must include student name and user id'})
+    } 
+})
+
+router.put('/:id', (req, res) => {
+    const id = req.params.id
+    const body = req.body
+
+    Students.change(id, body)
+        .then(student => {
+            res.status(200).json(student)
+        })
+        .catch(error => {
+            console.log(error)
+            res.status(500).json({ error: 'Could not update student'})
         })
 })
 
