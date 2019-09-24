@@ -25,7 +25,12 @@ https://better-professor-backend.herokuapp.com
   "last_name": "jake"
 }
 
-/users/login  POST endpoint for logging in with a registered user. Required inputs are username and password. This will return the id of the professor/user and the token
+/users/login  POST endpoint for logging in with a registered user. Required inputs are username and password. This will return the id of the professor/user and the token. this will return an object that looks like this:
+
+{
+  "id": 2,
+  "token": "hashed token"
+}
 
 students/user/:id GET endpoint for displaying the list of students that belong to the logged in userId. So the :id in the endpoint is the user id.
 
