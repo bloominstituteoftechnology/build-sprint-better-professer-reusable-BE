@@ -38,12 +38,12 @@ router.post('/login', (req, res) => {
 		});
 });
 
-router.get('/', restricted, (req, res) => {
-	Users.find()
-		.then((users) => {
-			res.json({ users, loggedInUser: req.user.username });
-		})
-		.catch((err) => res.send(err));
-});
+// router.get('/', restricted, (req, res) => {
+// 	Users.find()
+// 		.then((users) => {
+// 			res.json({ users, loggedInUser: req.user.username });
+// 		})
+// 		.catch((err) => res.send(err));
+// });
 
 module.exports = router;
