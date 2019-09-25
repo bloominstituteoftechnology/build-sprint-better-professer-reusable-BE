@@ -1,7 +1,22 @@
-const router = require('express').Router()
+const router = require('express').Router();
 
-const Students = require('./students-model')
+const Students = require('./students-model');
 
+<<<<<<< HEAD
+router.get('/:id', (req, res) => {
+	const { id } = req.params;
+	Students.find(id)
+		.then((students) => {
+			res.status(200).json(students);
+		})
+		.catch((error) => {
+			console.log(error);
+			res.status(500).json({ error: 'Could not load students' });
+		});
+});
+
+module.exports = router;
+=======
 router.get('/user/:id', (req, res) => {
     const { id } = req.params 
     Students.find(id)
@@ -58,3 +73,4 @@ router.delete('/:id', (req, res) => {
 })
 
 module.exports = router
+>>>>>>> 64b16791abf183b42848b404d6e4d74ff32073f6

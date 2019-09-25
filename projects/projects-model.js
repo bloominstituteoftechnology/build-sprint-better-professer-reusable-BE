@@ -17,12 +17,12 @@ function find(id) {
 
 function add(project) {
 	return db('projects').insert(project).then(([ id ]) => {
-		return id;
+		return findById(id);
 	});
 }
 
 function findById(id) {
-	return db('projects').where({ id: id }).then((project) => {
+	return db('projects').where({ id: id }).then(([ project ]) => {
 		console.log(project);
 		return project;
 	});

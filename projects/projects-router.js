@@ -25,6 +25,7 @@ router.post('/', (req, res) => {
 			res.status(201).json(project);
 		})
 		.catch((err) => {
+			console.log(err);
 			res.status(500).json(err.message);
 		});
 });
