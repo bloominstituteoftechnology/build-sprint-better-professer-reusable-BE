@@ -1,17 +1,32 @@
 const server = require('../api/server');
 const request = require('supertest');
 
-beforeEach(() => db.seed.run())
+const prepTestDB = require('../config/helpers');
 
-describe('owners', () => {
-    it("post /", async() => {
-    const 
-    })
-	it('get /', async () => {
-        const res = await request(server).get('/owners')
-        expect(res.status).toBe(200) // dont forget to add in test scripts in pacakge.json then run test
-    expect(res.body).toEqual([]) // body is equal to an empty array
-    console.log(res.body)
-    // you can add 'filename: memory' to filename in testing
-    });
+beforeEach(prepTestDB);
+
+describe('projects', () => {
+	it('get /students/:id', async () => {
+		const res = await request(server).get('/projects/students/2');
+		expect(res.status).toBe(200);
+
+		expect(res.body[1]).toEqual({
+			'project id': 5,
+			project_name: 'Jumping the Gun',
+			deadline: '12/11/2019',
+			deadline_type: 'Feedback',
+			description: 'Start too early before preparations are ready'
+		});
+	});
+
+	it('post /projects', async () => {
+		const res = await request(server).post('/projects').send({
+			project_name: 'Draw a Blank',
+			deadline: '11/1/2019',
+			deadline_type: 'Research paper',
+			description: 'The sky is clear,the stars are twinkling.',
+			student_id: 1
+		});
+		expect(res.status).toBe(201);
+	});
 });
