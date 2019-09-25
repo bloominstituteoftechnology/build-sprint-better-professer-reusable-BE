@@ -29,4 +29,28 @@ describe('projects', () => {
 		});
 		expect(res.status).toBe(201);
 	});
+
+	it('put /projects/:id', async () => {
+		const res = await request(server).put('/projects/1').send({
+			project_name: 'Draw a Blank',
+			deadline: '11/1/2019',
+			deadline_type: 'Research paper',
+			description: 'The sky is clear,the stars are twinkling.',
+			student_id: 1
+		});
+		expect(res.status).toBe(200);
+		expect(res.body).toEqual({
+			project_name: 'Draw a Blank',
+			deadline: '11/1/2019',
+			deadline_type: 'Research paper',
+			id: 1,
+			description: 'The sky is clear,the stars are twinkling.',
+			student_id: 1
+		});
+	});
+
+	it('delete /projects/:id', async () => {
+		const res = await request(server).delete('/projects/1');
+		expect(res.status).toBe(200);
+	});
 });
