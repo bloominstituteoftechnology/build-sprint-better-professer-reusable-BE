@@ -10,13 +10,13 @@ describe('messages', () => {
 		const res = await request(server).get('/messages/students/1');
 		expect(res.status).toBe(200);
 
-		expect(res.body[1]).toEqual({ message: 'asdasd', date: 'rowValue1', student_id: 1 });
+		expect(res.body[1]).toEqual({ message: 'A glittering gem is not enough.', date: '1/21/2020', student_id: 1 });
 	});
 
 	it('post /messages', async () => {
 		const res = await request(server)
 			.post('/messages')
-			.send({ message: 'asdasd', date: 'rowValue1', student_id: 1 });
+			.send({ message: 'A glittering gem is not enough.', date: '1/21/2020', student_id: 1 });
 		expect(res.status).toBe(201);
 	});
 });
