@@ -3,7 +3,6 @@ const router = require('express').Router();
 const Users = require('./user-model');
 const bcrypt = require('bcryptjs');
 
-const restricted = require('../auth/restricted-middleware');
 const tk = require('../config/generateToken');
 
 router.post('/register', (req, res) => {
@@ -37,13 +36,5 @@ router.post('/login', (req, res) => {
 			res.status(500).json(error);
 		});
 });
-
-// router.get('/', restricted, (req, res) => {
-// 	Users.find()
-// 		.then((users) => {
-// 			res.json({ users, loggedInUser: req.user.username });
-// 		})
-// 		.catch((err) => res.send(err));
-// });
 
 module.exports = router;
