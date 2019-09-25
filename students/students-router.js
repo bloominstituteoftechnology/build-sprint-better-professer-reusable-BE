@@ -1,6 +1,6 @@
-const router = require('express').Router()
+const router = require('express').Router();
 
-const Students = require('./students-model')
+const Students = require('./students-model');
 
 router.get('/user/:id', (req, res) => {
     const { id } = req.params 
