@@ -24,15 +24,17 @@ function add(body) {
 
 function findById(id) {
 	return db('students').where({ id: id }).then(([stud]) => {
-		console.log(stud);
 		return stud;
 	});
 }
 
 function change(id, info) {
     return db('students').where('id', id).update(info)
+    .then(student => {
+        return student
+    })
     }
-    // .then(count => (count > 0 ? this.get(id) : null))
+
 
 
 function remove(id) {
