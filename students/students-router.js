@@ -6,12 +6,7 @@ router.get('/user/:id', (req, res) => {
 	const { id } = req.params;
     Students.find(id)
 		.then(students => {
-            if(students[id]){
-                res.status(200).json(students);
-            } else {
-                return res.status(400).json({message: `User with id ${id} does not exist`})
-            }
-			
+            res.status(200).json(students);			
 		})
 		.catch((error) => {
 			console.log(error);
