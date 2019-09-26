@@ -4,9 +4,14 @@ const Students = require('./students-model');
 
 router.get('/user/:id', (req, res) => {
 	const { id } = req.params;
-	Students.find(id)
-		.then((students) => {
-			res.status(200).json(students);
+    Students.find(id)
+		.then(students => {
+            if(students[id]){
+                res.status(200).json(students);
+            } else {
+                return res.status(400).json({message: `User with id ${id} does not exist`})
+            }
+			
 		})
 		.catch((error) => {
 			console.log(error);
@@ -36,7 +41,11 @@ router.put('/:id', (req, res) => {
 
 	Students.change(id, body)
 		.then((student) => {
-			res.status(200).json(student);
+            if(student){
+                res.status(200).json(student);
+            } else {
+               return res.status(400).json({message: `Student with id ${id} does not exist`})
+            }
 		})
 		.catch((error) => {
 			console.log(error);
