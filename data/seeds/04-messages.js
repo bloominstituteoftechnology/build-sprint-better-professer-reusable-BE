@@ -1,8 +1,8 @@
 exports.seed = function(knex) {
 	return knex('messages').insert([
-		{ message: 'asdasbsd', date: 'rowValue1', student_id: 1 },
-		{ message: 'asdasd', date: 'rowValue1', student_id: 1 },
-		{ message: 'paosd', date: 'rowValue1', student_id: 1 },
-		{ message: 'po', date: 'rowValue1', student_id: 1 }
+		{ message: 'How was the math test?', date: '11/1/2019', student_id: 1 },
+		{ message: 'A glittering gem is not enough.', date: '1/21/2020', student_id: 1 },
+		{ message: 'Tom got a small piece of pie.', date: '2/22/2020', student_id: 1 },
+		{ message: 'Please wait outside of the house.', date: '2/12/2020', student_id: 1 }
 	]);
 };
