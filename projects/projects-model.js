@@ -16,7 +16,7 @@ function find(id) {
 }
 
 function add(project) {
-	return db('projects').insert(project).then(([ id ]) => {
+	return db('projects').insert(project).returning('id').then(([ id ]) => {
 		return findById(id);
 	});
 }

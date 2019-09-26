@@ -14,7 +14,7 @@ function find(id) {
 }
 
 function add(message) {
-	return db('messages').insert(message).then(([ id ]) => {
+	return db('messages').insert(message).returning('id').then(([ id ]) => {
 		return findById(id);
 	});
 }
