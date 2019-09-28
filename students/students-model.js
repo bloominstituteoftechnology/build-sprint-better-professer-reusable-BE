@@ -17,6 +17,8 @@ function find(id) {
 
 function add(body) {
 	return db('students').insert(body).returning('id').then(([ stud ]) => {
+		// returning bc postgres doesnt return the id by default like sqlite does
+		// or you could do .insert(body, 'id') & will autmatically return ID
 		return findById(stud);
 	});
 }

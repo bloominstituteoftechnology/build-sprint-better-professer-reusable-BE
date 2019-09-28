@@ -14,6 +14,7 @@ server.use('/users', UserRouter);
 server.use('/students', restrict, StudentsRouter);
 server.use('/messages', restrict, MessagesRouter);
 server.use('/projects', restrict, ProjectsRouter);
+// global middleware - the restrict variable applies it to every single endpoint
 
 server.get('/', (req, res) => {
 	res.send('Is this thing on?');
