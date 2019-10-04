@@ -12,7 +12,7 @@ function find(id) {
 	return db('students as s')
 		.join('projects as p', 's.id', '=', 'p.student_id')
 		.where({ student_id: id })
-		.select('p.id as project id', 'project_name', 'deadline', 'deadline_type', 'description');
+		.select('p.id', 'project_name', 'deadline', 'deadline_type', 'description');
 }
 
 function add(project) {
