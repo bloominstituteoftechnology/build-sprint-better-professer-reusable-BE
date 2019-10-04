@@ -12,7 +12,7 @@ function find(id) {
 	return db('users as u')
 		.join('students as s', 'u.id', '=', 's.user_id')
 		.where({ user_id: id })
-		.select('s.id', 's.student_name as student', 's.major');
+		.select('s.id', 's.student_name', 's.major');
 }
 
 function add(body) {
