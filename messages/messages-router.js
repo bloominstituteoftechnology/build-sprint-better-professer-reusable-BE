@@ -6,11 +6,7 @@ router.get('/students/:id', (req, res) => {
 	mm
 		.find(id)
 		.then((messages) => {
-			if (messages.length) {
-				res.json(messages);
-			} else {
-				res.status(404).json({ message: 'Could not find messages for given student' });
-			}
+			res.json(messages);
 		})
 		.catch((err) => {
 			res.status(500).json({ message: 'Failed to retrieve messages' });

@@ -6,11 +6,7 @@ router.get('/students/:id', (req, res) => {
 	projectsmodel
 		.find(id)
 		.then((projects) => {
-			if (projects.length) {
-				res.json(projects);
-			} else {
-				res.status(404).json({ message: 'Could not find projects for given student' });
-			}
+			res.json(projects);
 		})
 		.catch((err) => {
 			res.status(500).json({ message: 'Failed to retrieve projects' });
